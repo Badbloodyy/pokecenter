@@ -1,0 +1,22 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "Pokecenter et pokemon",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Badbloodyy/pokecenter.git"
+  },
+  "author": "Julien T",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Badbloodyy/pokecenter/issues"
+  },
+  "homepage": "https://github.com/Badbloodyy/pokecenter#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
