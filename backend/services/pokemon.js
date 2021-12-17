@@ -33,7 +33,7 @@ exports.createManyPokemon = (req, res, next) => {
     pokemonArr = [];
 
     for (var key in req.body) {
-        if (req.body.hasOwnProperty(key)) { 
+        if (req.body.hasOwnProperty(key)) {
             delete req.body[key]._id;
             let item = req.body[key];
             pokemonArr.push(item);
@@ -44,15 +44,12 @@ exports.createManyPokemon = (req, res, next) => {
     Pokemon.insertMany(pokemonArr, { ordered: true })
         .then(() => res.status(201).json({ message: 'Tableau enregistré' }))
         .catch(error => res.status(400).json({ error }));
-
-
 }
 
 exports.modifyPokemon = (req, res, next) => {
-   Pokemon.updateOne({ id: req.params.id }, { ...req.body, id: req.params.id })
-        .then(() => res.status(200).json({ message: 'Objet modifié'}))
+    Pokemon.updateOne({ id: req.params.id }, { ...req.body, id: req.params.id })
+        .then(() => res.status(200).json({ message: 'Objet modifié' }))
         .catch(error => res.status(400).json({ error }));
-    
 };
 
 exports.deletePokemon = (req, res, next) => {

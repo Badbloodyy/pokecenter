@@ -16,21 +16,21 @@ exports.createMasters = (req, res, next) => {
 
 exports.getMasters = (req, res, next) => {
     Master.find()
-    .then((masters) => res.status(200).json({masters}))
-    .catch(error => res.status(400).json({ error }));
+        .then((masters) => res.status(200).json({ masters }))
+        .catch(error => res.status(400).json({ error }));
 };
 
 // marche pas
 exports.addPokemonsToMaster = (req, res, next) => {
-    Master.findByIdAndUpdate({id : req.params.id}, ...req.body, {runValidators: true})
-    .then(() => res.status(201).json({ message: "Entraineur bien mis à jour "}))
-    .catch(error => res.status(400).json(error));
+    Master.findByIdAndUpdate({ id: req.params.id }, ...req.body, { runValidators: true })
+        .then(() => res.status(201).json({ message: "Entraineur bien mis à jour " }))
+        .catch(error => res.status(400).json(error));
 };
 
 exports.getPokemonFromMaster = (req, res, next) => {
-    Master.findOne({id : req.params.id}, 'pokemons')
-    .then((master) => res.status(200).json({master}))
-    .catch(error => res.status(400).json({ error }));
+    Master.findOne({ id: req.params.id }, 'pokemons')
+        .then((master) => res.status(200).json({ master }))
+        .catch(error => res.status(400).json({ error }));
 }
 
 

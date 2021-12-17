@@ -8,7 +8,7 @@ const masterSchema = mongoose.Schema({
         type: [{
             type: Object
         }],
-        validate: [arrayLimit, '{PATH} pokemons? Il en faut 6!']
+        validate: [arrayLimit, '{PATH} pokemons? Il en faut 6!'] // Utilisation de validate pour limiter à 6, pris sur le net
     }
 });
 
