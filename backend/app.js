@@ -1,11 +1,15 @@
-// import d'exprss depuis le node module
+// import d'express depuis le node module
 const express = require('express');
+const mongodb = require('./db/mongo');
+const indexController = require('./controllers/index');
 
 // créer l'application express
 const app = express();
 
+mongodb.initClientDbConnection();
+
 // middleware qui permet de recupéré le contenu json d'une requêt si c'est envoyé en json (pour le post). Similair a body parcer
-app.use(express.json());
+app.use(express.json({limit : '2mb'}));
 
 // créer un header pour éviter le cross origin. Vu qu'il n'y a pas d'endpoint, elle sera appliqué à toute les routes
 app.use((req, res, next) => {
@@ -15,8 +19,6 @@ app.use((req, res, next) => {
     next();
 });
 
-
-
 // route get / endpoint. Obligation de mettre un statut a la réponse si endpoint.
 app.get('/hello', (req, res, next) => {
     console.log("Hello World de Pokemon");
@@ -24,15 +26,7 @@ app.get('/hello', (req, res, next) => {
     next();
 });
 
-app.post('/hello', (req,res,next) => {
-    // .body contient le json venant de la requête
-    console.log(req.body());
-    res.status(201).json({
-        message : 'Message envoyé'
-    });
-});
-
-
+app.use('/index', indexController);
 
 /*
 
